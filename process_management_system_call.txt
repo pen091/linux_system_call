@@ -1,0 +1,194 @@
+Process management system calls
+
+Processes are the most fundamental abstraction in a Linux system, after files. As object code in execution - active, alive, running programs - processes are more than just assembly language; they consist of data, resources, state, and a virtualized computer.
+
+Linux took an interesting path, one seldom traveled, and separated the act of reating a new process from the act of loading a new binary image. Although the two tasks are performed in tandem most of the time, the division has allowed a great deal of freedom for experimenta tion and evolution for each of the tasks. This road less traveled has survived to this day, and while most operating systems offer a single system call to start up a new program, Linux requires two: a fork and an exec.
+
+Contents:
+
+Creation and termination
+
+Pocess id
+
+Session id
+
+Process group id
+
+Users and groups
+
+Namespaces
+
+Resource limits
+
+Process scheduling
+
+Virtual memory
+
+Threads
+
+Miscellaneous
+
+Tip: For detailed information about each system call please read: Linux man pages
+
+Creation and termination
+Syscall	Number	Description
+CLONE	56	Create a child process
+FORK	57	Create a child process
+VFORK	58	Create a child process and block parent
+EXECVE	59	Execute program
+EXECVEAT	322	Execute program relative to a directory file descriptor
+EXIT	60	Terminate the calling process
+EXIT_GROUP	231	Terminate all threads in a process
+WAIT4	61	Wait for process to change state
+WAITID	247	Wait for process to change state
+Syscall listtop
+
+
+
+
+Pocess id
+Syscall	Number	Description
+GETPID	39	Get process ID
+GETPPID	110	Get parent process ID
+GETTID	186	Get thread ID
+Syscall listtop
+Session id
+Syscall	Number	Description
+SETSID	112	Set session ID
+GETSID	124	Get session ID
+Syscall listtop
+
+
+
+
+Process group id
+Syscall	Number	Description
+SETPGID	109	Set process group ID
+GETPGID	121	Get process group ID
+GETPGRP	111	Get the process group ID of the calling process
+Syscall listtop
+
+
+
+
+Users and groups
+Syscall	Number	Description
+SETUID	105	Set real user ID
+GETUID	102	Get real user ID
+SETGID	106	Set real group ID
+GETGID	104	Get real group ID
+SETRESUID	117	Set real, effective and saved user IDs
+GETRESUID	118	Get real, effective and saved user IDs
+SETRESGID	119	Set real, effective and saved group IDs
+GETRESGID	120	Get real, effective and saved group IDs
+SETREUID	113	Set real and/or effective user ID
+SETREGID	114	Set real and/or effective group ID
+SETFSUID	122	Set user ID used for file system checks
+SETFSGID	123	Set group ID used for file system checks
+GETEUID	107	Get effective user ID
+GETEGID	108	Get effective group ID
+SETGROUPS	116	Set list of supplementary group IDs
+GETGROUPS	115	Get list of supplementary group IDs
+Syscall listtop
+
+
+
+
+
+
+Namespaces
+Syscall	Number	Description
+SETNS	308	Reassociate thread with a namespace
+Syscall listtop
+
+
+
+
+
+
+Resource limits
+Syscall	Number	Description
+SETRLIMIT	160	Set resource limits
+GETRLIMIT	97	Get resource limits
+PRLIMIT	302	Set and get the resource limits of an arbitrary process
+GETRUSAGE	98	Get resource usage
+Syscall listtop
+
+
+
+
+
+Process scheduling
+Syscall	Number	Description
+SCHED_SETATTR	314	Set scheduling policy and attributes
+SCHED_GETATTR	315	Get scheduling policy and attributes
+SCHED_SETSCHEDULER	144	Set scheduling policy/parameters
+SCHED_GETSCHEDULER	145	Get scheduling policy/parameters
+SCHED_SETPARAM	142	Set scheduling parameters
+SCHED_GETPARAM	143	Get scheduling parameters
+SCHED_SETAFFINITY	203	Set a process's CPU affinity mask
+SCHED_GETAFFINITY	204	Get a process's CPU affinity mask
+SCHED_GET_PRIORITY_MAX	146	Get static priority range (max value)
+SCHED_GET_PRIORITY_MIN	147	Get static priority range (min value)
+SCHED_RR_GET_INTERVAL	148	Get the SCHED_RR interval for the named process
+SCHED_YIELD	24	Yield the processor
+SETPRIORITY	141	Set program scheduling priority
+GETPRIORITY	140	Get program scheduling priority
+IOPRIO_SET	251	Set I/O scheduling class and priority
+IOPRIO_GET	252	Get I/O scheduling class and priority
+Syscall listtop
+
+
+
+
+
+
+Virtual memory
+Syscall	Number	Description
+BRK	12	Change data segment size
+MMAP	9	Map files or devices into memory
+MUNMAP	11	Unmap files or devices into memory
+MREMAP	25	Remap a virtual memory address
+MPROTECT	10	Set protection on a region of memory
+MADVISE	28	Give advice about use of memory
+MLOCK	149	Lock part of the calling process's virtual address space into RAM
+MLOCK2	325	Lock part of the calling process's virtual address space into RAM
+MLOCKALL	151	Lock all of the calling process's virtual address space into RAM
+MUNLOCK	150	Unlock part of the calling process's virtual address space into RAM
+MUNLOCKALL	152	Unlock all of the calling process's virtual address space into RAM
+MINCORE	27	Determine whether pages are resident in memory
+MEMBARRIER	324	Issue memory barriers on a set of threads
+MODIFY_LDT	154	Reads or writes the local descriptor table (ldt) for a process
+Syscall listtop
+
+
+
+
+
+Threads
+Syscall	Number	Description
+CAPSET	126	Set capabilities of thread(s)
+CAPGET	125	Get capabilities of thread(s)
+SET_THREAD_AREA	205	Set a thread local storage (TLS) area
+GET_THREAD_AREA	211	Get a thread-local storage (TLS) area
+SET_TID_ADDRESS	218	Set pointer to thread ID
+ARCH_PRCTL	158	Set architecture-specific thread state
+Syscall listtop
+
+
+
+
+
+
+Miscellaneous
+Syscall	Number	Description
+USELIB	134	Load shared library
+PRCTL	157	Operations on a process
+SECCOMP	317	Operate on Secure Computing state of the process
+PTRACE	101	Process trace
+PROCESS_VM_READV	310	Transfers data from the remote process to the local process
+PROCESS_VM_WRITEV	311	Transfers data from the local process to the remote process
+KCMP	312	Compare two processes to determine if they share a kernel resource
+UNSHARE	272	Disassociate parts of the process execution context
+Syscall listtop
+

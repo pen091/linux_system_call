@@ -1,0 +1,58 @@
+Signal system calls
+Signals are software interrupts that provide a mechanism for handling asynchronous events. These events can originate from outside the system - such as when the user generates the interrupt character (usually via Ctrl-C) - or from activities within the program or kernel, such as when the process executes code that divides by zero. As a primitive form of interprocess communication (IPC), one process can also send a signal to another process.
+
+Contents :
+
+Standard signals
+
+Real-time signals
+
+File descriptor based signals
+
+Miscellaneous
+
+Tip: For detailed information about each system call please read: Linux man pages
+
+Standard signals
+Syscall	Number	Description
+KILL	62	Send signal to a process
+TKILL	200	Send a signal to a thread
+TGKILL	234	Send a signal to a thread
+PAUSE	34	Wait for a signal
+Syscall listtop
+
+
+
+
+Real-time signals
+Syscall	Number	Description
+RT_SIGACTION	13	Examine and change a signal action
+RT_SIGPROCMASK	14	Examine and change blocked signals
+RT_SIGPENDING	127	Examine pending signals
+RT_SIGQUEUEINFO	129	Queue a signal and data
+RT_TGSIGQUEUEINFO	297	Queue a signal and data
+RT_SIGTIMEDWAIT	128	Synchronously wait for queued signals
+RT_SIGSUSPEND	130	Wait for a signal
+RT_SIGRETURN	15	Return from signal handler and cleanup stack frame
+SIGALTSTACK	131	Set and/or get signal stack context
+Syscall listtop
+
+
+
+
+File descriptor based signals
+Syscall	Number	Description
+SIGNALFD	282	Create a file descriptor for accepting signals
+SIGNALFD4	289	Create a file descriptor for accepting signals
+EVENTFD	284	Create a file descriptor for event notification
+EVENTFD2	290	Create a file descriptor for event notification
+Syscall listtop
+
+
+
+
+Miscellaneous
+Syscall	Number	Description
+RESTART_SYSCALL	219	Restart a system call after interruption by a stop signal
+Syscall listtop
+

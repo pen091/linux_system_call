@@ -1,0 +1,98 @@
+HomeAboutNewsDownloadsDocumentationSupportContacts
+Linux Assemblycollection of fast libraries
+Linux system calls:
+
+File system
+
+Network
+
+Time
+
+Processes
+
+Signals
+
+IPC
+
+NUMA
+
+Key management
+System-wide
+
+
+Network system calls
+
+Like most other Unix-based operating systems, Linux supports TCP/IP as its native network transport. Network system calls is the way to make communications between computes via different kind of network interfaces: wired and wireless devices, fiber channel and etc. Most of network operations are based on BSD sockets interface.
+
+Sockets allow processes on different computers to exchange data through a network. Sockets can also be used as a communication tool for processes located on the same host computer; the X Window System graphic interface, for instance, uses a socket to allow client programs to exchange data with the X server.
+
+Contents:
+Socket operations
+
+Send/Receive
+
+Naming
+
+Packet filtering
+
+Tip: For detailed information about each system call please read: Linux man pages
+
+
+
+
+
+Socket operations:
+
+Syscall	Number	Description
+SOCKET	41	Create an endpoint for communication
+SOCKETPAIR	53	Create a pair of connected sockets
+SETSOCKOPT	54	Set options on sockets
+GETSOCKOPT	55	Get options on sockets
+GETSOCKNAME	51	Get socket name
+GETPEERNAME	52	Get name of connected peer socket
+BIND	49	Bind a name to a socket
+LISTEN	50	Listen for connections on a socket
+ACCEPT	43	Accept a connection on a socket
+ACCEPT4	288	Accept a connection on a socket
+CONNECT	42	Initiate a connection on a socket
+SHUTDOWN	48	Shut down part of a full-duplex connection
+Syscall listtop
+
+
+
+
+
+Send/Receive
+
+Syscall	Number	Description
+RECVFROM	45	Receive a message from a socket
+RECVMSG	47	Receive a message from a socket
+RECVMMSG	299	Receive multiple messages from a socket
+SENDTO	44	Send a message on a socket
+SENDMSG	46	Send a message on a socket
+SENDMMSG	307	Send multiple messages on a socket
+Syscall listtop
+
+
+
+
+
+Naming
+
+Syscall	Number	Description
+SETHOSTNAME	170	Set hostname
+SETDOMAINNAME	171	Set NIS domain name
+Syscall listtop
+
+
+
+
+
+
+Packet filtering
+
+Syscall	Number	Description
+BPF	321	Perform a command on an extended BPF map or program
+Syscall listtop
+Home|About|News|Downloads|Documentation|Support|Contacts
+Copyright 2012-2018 Jack Black. All rights reserved.

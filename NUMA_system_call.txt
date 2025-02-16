@@ -1,0 +1,30 @@
+Non-Uniform Memory Access (NUMA) system calls
+
+We are used to thinking of the computer’s memory as a homogeneous, shared resource. Disregarding the role of the hardware caches, we expect the time required for a CPU to access a memory location to be essentially the same, regardless of the location’s physical address and the CPU. Unfortunately, this assumption is not true.
+
+Linux supports the Non-Uniform Memory Access (NUMA) model, in which the access times for different memory locations from a given CPU may vary. The physical memory of the system is partitioned in several nodes. The time needed by a given CPU to access pages within a single node is the same. However, this time might not be the same for two different CPUs. For every CPU, the kernel tries to minimize the number of accesses to costly nodes by carefully selecting where the kernel data structures that are most often referenced by the CPU are stored.
+
+Contents :
+
+CPU node
+
+Memory node
+
+Tip: For detailed information about each system call please read: Linux man pages
+
+CPU node
+Syscall	Number	Description
+GETCPU	309	Determine CPU and NUMA node on which the calling thread is running
+Syscall listtop
+
+
+
+
+Memory node
+Syscall	Number	Description
+SET_MEMPOLICY	238	Set default NUMA memory policy for a process and its children
+GET_MEMPOLICY	239	Retrieve NUMA memory policy for a process
+MBIND	237	Set the NUMA memory policy for a memory range
+MOVE_PAGES	279	Move individual pages of a process to another node
+MIGRATE_PAGES	256	Move all pages in a process to another set of nodes
+Syscall listtop

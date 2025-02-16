@@ -1,0 +1,15 @@
+Linux key management system calls
+
+The keyrings facility is primarily a way for drivers to retain or cache security data, authentication keys, encryption keys and other data in the kernel. System call interfaces are provided so that userspace programs can manage those objects and also use the facility for their own purposes. The facility has a number of users and usages, but is not limited to those that already exist.
+
+In-kernel uses of this facility include: Network filesystems (DNS), NFS (user ID mapping), CIFS (Password), module verification.
+
+Userspace uses of this facility include Kerberos key storage.
+
+Tip: For detailed information about each system call please read: Linux man pages
+
+Syscall	Number	Description
+ADD_KEY	248	Add a key to the kernel's key management facility
+REQUEST_KEY	249	Request a key from the kernel's key management facility
+KEYCTL	250	Manipulate the kernel's key management facility
+Syscall listtop

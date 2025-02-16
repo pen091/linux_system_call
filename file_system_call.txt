@@ -1,0 +1,270 @@
+HomeAboutNewsDownloadsDocumentationSupportContacts
+Linux Assemblycollection of fast libraries
+Linux system calls:
+
+
+File system
+
+Network
+
+Time
+
+Processes
+
+Signals
+
+IPC
+
+NUMA
+
+Key management
+
+System-wide
+
+
+
+
+File system calls
+
+The file is the most basic and fundamental abstraction in Linux. Linux
+follows the everything-is-a-file philosophy. Consequently, much interaction
+transpires via filesystem system calls such as reading of and writing to 
+files, even when the object in question is not what you would consider
+your everyday file.
+
+In order to be accessed, a file must first be opened. Files can be opened for reading, writing, or both. An open file is referenced via a unique descriptor, a 
+mapping from the metadata associated with the open file back to the specific 
+file itself. Inside the Linux kernel, this descriptor is handled by an integer 
+(of the C type int) called the file descriptor, abbreviated fd. File descriptors are shared with user space, and are used directly by user programs to access
+files. A large part of Linux system programming consists of opening, 
+manipulating, closing, and otherwise using file descriptors.
+
+Contents
+File operations
+Directory operations
+Link operations
+Basic file attributes
+Extended file attributes
+File descriptor manipulations
+Read/Write
+Synchronized I/O
+Asynchronous I/O
+Multiplexed I/O
+Monitoring file events
+Miscellaneous
+Tip: For detailed information about each system call please read: Linux man pages
+
+
+
+
+
+
+File operations
+
+Syscall	Number	Description
+CLOSE	3	Close a file descriptor
+CREAT	85	Open and possibly create a file
+OPEN	2	Open and possibly create a file
+OPENAT	257	Open and possibly create a file relative to a directory file descriptor
+NAME_TO_HANDLE_AT	303	Obtain handle for a pathname
+OPEN_BY_HANDLE_AT	304	Open file via a handle
+MEMFD_CREATE	319	Сreate an anonymous file
+MKNOD	133	Create a special or ordinary file
+MKNODAT	259	Create a special or ordinary file relative to a directory file descriptor
+RENAME	82	Rename a file
+RENAMEAT	264	Rename a file relative to directory file descriptors
+RENAMEAT	316	Rename a file relative to directory file descriptors
+TRUNCATE	76	Truncate a file to a specified length
+FTRUNCATE	77	Truncate a file to a specified length
+FALLOCATE	285	Manipulate file space
+Syscall listtop
+
+
+
+
+
+
+Directory operations
+
+Syscall	Number	Description
+MKDIR	83	Create a directory
+MKDIRAT	258	Create a directory relative to a directory file descriptor
+RMDIR	84	Delete a directory
+GETCWD	79	Get current working directory
+CHDIR	80	Change working directory
+FCHDIR	81	Change working directory
+CHROOT	161	Change root directory
+GETDENTS	78	Get directory entries
+GETDENTS64	217	Get directory entries
+LOOKUP_DCOOKIE	212	Return a directory entry's path
+Syscall listtop
+
+
+
+
+
+
+Link operations
+
+Syscall	Number	Description
+LINK	86	Create a hard link to a file
+LINKAT	265	Create a hard link to a file relative to directory file descriptors
+SYMLINK	88	Create a symbolic link to a file
+SYMLINKAT	266	Create a symbolic link to a file relative to a directory file descriptor
+UNLINK	87	Delete a name and possibly the file it refers to
+UNLINKAT	263	Delete a name and possibly the file it refers to relative to a directory file descriptor
+READLINK	89	Read value of a symbolic link
+READLINKAT	267	Read value of a symbolic link relative to a directory file descriptor
+Syscall listtop
+
+
+
+
+
+
+Basic file attributes
+
+Syscall	Number	Description
+UMASK	95	Set file mode creation mask
+STAT	4	Get file metadata
+LSTAT	6	Get link metadata
+FSTAT	5	Get file metadata
+FSTATAT	262	Get file metadata relative to a directory file descriptor
+CHMOD	90	Change permissions of a file
+FCHMOD	91	Change permissions of a file
+FCHMODAT	268	Change permissions of a file relative to a directory file descriptor
+CHOWN	92	Change ownership of a file
+LCHOWN	94	Change ownership of a link
+FCHOWN	93	Change ownership of a file
+FCHOWNAT	260	Change ownership of a file relative to a directory file descriptor
+UTIME	132	Change file last access and modification times
+UTIMES	235	Change file last access and modification times
+FUTIMESAT	261	Change timestamps of a file relative to a directory file descriptor
+UTIMENSAT	280	Change file timestamps with nanosecond precision
+ACCESS	21	Check real user's permissions for a file
+FACCESSAT	269	Check real user's permissions for a file relative to a directory file descriptor
+Syscall listtop
+
+
+
+
+
+
+Extended file attributes
+
+Syscall	Number	Description
+SETXATTR	188	Set an extended attribute value
+LSETXATTR	189	Set an extended attribute value
+FSETXATTR	190	Set an extended attribute value
+GETXATTR	191	Retrieve an extended attribute value
+LGETXATTR	192	Retrieve an extended attribute value
+FGETXATTR	193	Retrieve an extended attribute value
+LISTXATTR	194	List extended attribute names
+LLISTXATTR	195	List extended attribute names
+FLISTXATTR	196	List extended attribute names
+REMOVEXATTR	197	Remove an extended attribute
+LREMOVEXATTR	198	Remove an extended attribute
+FREMOVEXATTR	199	Remove an extended attribute
+Syscall listtop
+
+
+
+
+File descriptor manipulations
+
+Syscall	Number	Description
+IOCTL	16	Control device
+FCNTL	72	Manipulate file descriptor
+DUP	32	Duplicate a file descriptor
+DUP2	33	Duplicate a file descriptor
+DUP3	292	Duplicate a file descriptor
+FLOCK	73	Apply or remove an advisory lock on an open file
+Syscall listtop
+
+
+
+
+Read/Write
+
+Syscall	Number	Description
+READ	0	Read from a file descriptor
+READV	19	Read data into multiple buffers
+PREAD	17	Read from a file descriptor at a given offset
+PREADV	295	Read data into multiple buffers
+WRITE	1	Write to a file descriptor
+WRITEV	20	Write data into multiple buffers
+PWRITE	18	Write to a file descriptor at a given offset
+PWRITEV	296	Write data into multiple buffers
+LSEEK	8	Reposition read/write file offset
+SENDFILE	40	Transfer data between file descriptors
+Syscall listtop
+
+
+
+
+
+Synchronized I/O
+
+Syscall	Number	Description
+FDATASYNC	75	Synchronize a file's in-core state with storage device
+FSYNC	74	Synchronize a file's in-core state with storage device
+MSYNC	26	Synchronize a file with a memory map
+SYNC_FILE_RANGE	277	Sync a file segment with disk
+SYNC	162	Commit buffer cache to disk
+SYNCFS	306	Commit buffer cache to disk
+Syscall listtop
+Asynchronous I/O
+Syscall	Number	Description
+IO_SETUP	206	Create an asynchronous I/O context
+IO_DESTROY	207	Destroy an asynchronous I/O context
+IO_SUBMIT	209	Submit asynchronous I/O blocks for processing
+IO_CANCEL	210	Cancel an outstanding asynchronous I/O operation
+IO_GETEVENTS	208	Read asynchronous I/O events from the completion queue
+Syscall listtop
+
+
+
+
+
+Multiplexed I/O
+
+Syscall	Number	Description
+SELECT	23	Synchronous I/O multiplexing
+PSELECT6	270	Synchronous I/O multiplexing
+POLL	7	Wait for some event on a file descriptor
+PPOLL	271	Wait for some event on a file descriptor
+EPOLL_CREATE	213	Open an epoll file descriptor
+EPOLL_CREATE1	291	Open an epoll file descriptor
+EPOLL_CTL	233	Control interface for an epoll descriptor
+EPOLL_WAIT	232	Wait for an I/O event on an epoll file descriptor
+EPOLL_PWAIT	281	Wait for an I/O event on an epoll file descriptor
+Syscall listtop
+
+
+
+
+
+Monitoring file events
+
+Syscall	Number	Description
+INOTIFY_INIT	253	Initialize an inotify instance
+INOTIFY_INIT1	294	Initialize an inotify instance
+INOTIFY_ADD_WATCH	254	Add a watch to an initialized inotify instance
+INOTIFY_RM_WATCH	255	Remove an existing watch from an inotify instance
+FANOTIFY_INIT	300	Create and initialize fanotify group
+FANOTIFY_MARK	301	Add, remove, or modify an fanotify mark on a filesystem object
+Syscall listtop
+
+
+
+
+
+Miscellaneous
+
+Syscall	Number	Description
+FADVISE64	221	Predeclare an access pattern for file data
+READAHEAD	187	Perform file readahead into page cache
+GETRANDOM	318	Obtain a series of random bytes
+Syscall listtop
+
+

@@ -1,0 +1,77 @@
+Time system calls
+
+The kernel measures the passage of time in three different ways: wall time (or real time), process time and monotonic time. These three measurements of time may be represented in one of two formats: relative time and absolute time. Managing the passage of time on a Linux system involves several tasks, only some of which any given process is concerned with: they include setting and retrieving the current wall time, calculating elapsed time, sleeping for a given amount of time, performing high-precision measurements of time, and controlling timers. This is accessible via Linux time system calls.
+
+Contents :
+
+Current time of day
+
+POSIX clocks
+
+Clocks-based timers
+
+Timers
+
+File descriptor based timers
+
+Miscellaneous
+
+Tip: For detailed information about each system call please read: Linux man pages
+
+Current time of day
+
+Syscall	Number	Description
+TIME	201	Get time in seconds
+SETTIMEOFDAY	164	Set time
+GETTIMEOFDAY	96	Get time
+Syscall listtop
+
+
+
+
+
+POSIX clocks
+Syscall	Number	Description
+CLOCK_SETTIME	227	Set the time of the specified clock
+CLOCK_GETTIME	228	Get the time of the specified clock
+CLOCK_GETRES	229	Get resolution of the specified clock
+CLOCK_ADJTIME	305	Tune the specified clock
+CLOCK_NANOSLEEP	230	Do high-resolution sleep using the specified clock
+Syscall listtop
+
+
+
+
+Clocks-based timers
+Syscall	Number	Description
+TIMER_CREATE	222	Create a POSIX per-process timer
+TIMER_DELETE	226	Delete a POSIX per-process timer
+TIMER_SETTIME	223	Arm/disarm POSIX per-process timer
+TIMER_GETTIME	224	Fetch state of POSIX per-process timer
+TIMER_GETOVERRUN	225	Get overrun count for a POSIX per-process timer
+Syscall listtop
+Timers
+Syscall	Number	Description
+ALARM	37	Set an alarm clock for delivery of a signal
+SETITIMER	38	Set value of an interval timer
+GETITIMER	36	Get value of an interval timer
+Syscall listtop
+
+
+
+
+
+File descriptor based timers
+Syscall	Number	Description
+TIMERFD_CREATE	283	Creates a new file descriptors based timer object
+TIMERFD_SETTIME	286	Arm/disarm the timer referred to by the file descriptor
+TIMERFD_GETTIME	287	Get current setting of the timer referred to by the file descriptor
+Syscall listtop
+
+
+Miscellaneous
+Syscall	Number	Description
+ADJTIMEX	159	Tune kernel clock
+NANOSLEEP	35	High-resolution sleep
+TIMES	100	Get process times
+Syscall list

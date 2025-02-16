@@ -1,0 +1,84 @@
+System-wide system calls
+
+This section covers system calls, which can not be assigned to any other sections. Such system calls usually provide system wide information about kernel and whole operation system. Also they can change typical behavior of Linux and extend its functionality by loadable modules.
+
+Contents :
+
+Loadable modules
+
+Accounting and quota
+
+Filesystem (privileged)
+
+Filesystem (unprivileged)
+
+Miscellaneous (privileged)
+
+Miscellaneous (unprivileged)
+
+Tip: For detailed information about each system call please read: Linux man pages
+
+Loadable modules
+Syscall	Number	Description
+CREATE_MODULE	174	Create a loadable module entry
+INIT_MODULE	175	Load a kernel module
+FINIT_MODULE	313	Load a kernel module
+DELETE_MODULE	176	Unload a kernel module
+QUERY_MODULE	178	Query the kernel for various bits pertaining to modules
+GET_KERNEL_SYMS	177	Retrieve exported kernel and module symbols
+Syscall listtop
+
+
+
+Accounting and quota
+Syscall	Number	Description
+ACCT	163	Switch process accounting on or off
+QUOTACTL	179	Manipulate disk quotas
+Syscall listtop
+
+
+
+Filesystem (privileged)
+Syscall	Number	Description
+PIVOT_ROOT	155	Change the root file system
+SWAPON	167	Start swapping to file/device
+SWAPOFF	168	Stop swapping to file/device
+MOUNT	165	Mount file system
+UMOUNT2	166	Unmount file system
+NFSSERVCTL	180	Syscall interface to kernel nfs daemon
+Syscall listtop
+
+
+
+Filesystem (unprivileged)
+Syscall	Number	Description
+USTAT	136	Get file system statistics
+STATFS	137	Get file system statistics
+FSTATFS	138	Get file system statistics
+SYSFS	139	Get file system type information
+Syscall listtop
+
+
+
+Miscellaneous (privileged)
+Syscall	Number	Description
+_SYSCTL	156	Read/write system parameters
+SYSLOG	103	Read and/or clear kernel message ring buffer
+IOPERM	173	Set port input/output permissions
+IOPL	172	Change I/O privilege level
+PERSONALITY	135	Set the process execution domain
+VHANGUP	153	Virtually hangup the current terminal
+REBOOT	169	Reboot or enable/disable Ctrl-Alt-Del
+KEXEC_LOAD	246	Load a new kernel for later execution
+KEXEC_FILE_LOAD	320	Load a new kernel for later execution
+PERF_EVENT_OPEN	298	Set up performance monitoring
+Syscall listtop
+
+
+
+
+Miscellaneous (unprivileged)
+Syscall	Number	Description
+UNAME	63	Get name and information about current kernel
+SYSINFO	99	Returns information on overall system statistics
+Syscall listtop

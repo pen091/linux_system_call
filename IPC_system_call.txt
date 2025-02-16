@@ -1,0 +1,83 @@
+Inter Process Communication (IPC) system calls
+
+Allowing processes to exchange information and notify each other of events is one of an operating system’s most important jobs. The Linux kernel implements most of the historic Unix IPC mechanisms - including those defined and standardized by both System V and POSIX - as well as implementing a mechanism or two of its own. IPC mechanisms supported by Linux include pipes, named pipes, semaphores, message queues, shared memory, and futexes.
+
+Contents
+
+Pipe
+
+Shared memory
+
+Semaphores
+
+Futexes
+
+Message queues
+
+System V message queue
+
+POSIX message queue
+
+Tip: For detailed information about each system call please read: Linux man pages
+
+Pipe
+Syscall	Number	Description
+PIPE	22	Create pipe
+PIPE2	293	Create pipe
+TEE	276	Duplicate pipe content
+SPLICE	275	Splice data to/from a pipe
+VMSPLICE	278	Splice user pages into a pipe
+Syscall listtop
+
+
+
+
+Shared memory
+Syscall	Number	Description
+SHMGET	29	Allocates a System V shared memory segment
+SHMCTL	31	System V shared memory control
+SHMAT	30	Attach the System V shared memory segment to the address space of the calling process
+SHMDT	67	Dettach the System V shared memory segment to the address space of the calling process
+Syscall listtop
+
+
+
+
+Semaphores
+Syscall	Number	Description
+SEMGET	64	Get a System V semaphore set identifier
+SEMCTL	66	System V semaphore control operations
+SEMOP	65	System V semaphore operations
+SEMTIMEDOP	220	System V semaphore operations
+Syscall listtop
+
+
+
+
+
+Futexes
+Syscall	Number	Description
+FUTEX	202	Fast user-space locking
+SET_ROBUST_LIST	273	Set list of robust futexes
+GET_ROBUST_LIST	274	Get list of robust futexes
+Syscall listtop
+
+
+
+
+Message queues
+System V message queue
+Syscall	Number	Description
+MSGGET	68	Get a System V message queue identifier
+MSGCTL	71	System V message control operations
+MSGSND	69	Send message to a System V message queue
+MSGRCV	70	Receive messages from a System V message queue
+POSIX message queue
+Syscall	Number	Description
+MQ_OPEN	240	Open POSIX message queue
+MQ_UNLINK	241	Remove a message queue
+MQ_GETSETATTR	245	Get/set message queue attributes
+MQ_TIMEDSEND	242	Send a message to a message queue
+MQ_TIMEDRECEIVE	243	Receive a message from a message queue
+MQ_NOTIFY	244	Register for notification when a message is available
+Syscall listtop
